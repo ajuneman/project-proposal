@@ -99,7 +99,7 @@ Still in progress: a creative map project that depicts salinity throughout each 
 
 **Elective timeline (what you will have completed each week):**
 
-Week 7: enter your own text here
+Week 7: project proposal and workplan
 
 Week 8 (timeline check in): enter your own text here
 
