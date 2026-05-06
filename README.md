@@ -27,15 +27,12 @@ Note:
 
 Audrey Juneman, Madeline Hulle
 
-## Group name (optional):
-
-[delete this line and enter your group name here; if you don't have one, delete the whole section]
 
 ## Topic information and question
 
 **Topic:**  
 
-[delete this line and enter your topic here]
+Hydrology/Water Quality
 
 **Question(s):**  
 
@@ -43,13 +40,15 @@ How does precipitation explain salinity?
 
 **Response variable(s)**
 
-[delete this line and enter your bullet point list here]
+Salinity (ppt)
 
 ## Datasets
 
 **Datasets used:**
 
-[delete this line and enter your bullet point list here]
+- NOAA-weather-data.csv
+- NCOS_YSI_Water_Quality_Monitoring_).csv
+- YSI_Data_Begin_1.csv
 
 ## Figures
 
