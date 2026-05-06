@@ -55,7 +55,7 @@ How does precipitation explain salinity?
 
 **Potential figure 1:**
 
-[delete this line and enter your figure here]
+Our first figure has date on the x-axis and precipitation on the y-axis, showing the precipitation at each site over time. This figure will contextualize when the rainy seasons occur. 
 
 **Potential figure 2:**
 
