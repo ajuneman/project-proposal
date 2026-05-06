@@ -36,7 +36,7 @@ Hydrology/Water Quality
 
 **Question(s):**  
 
-[delete this line and enter your bullet point list here]
+How does precipitation explain salinity?
 
 **Response variable(s)**
 
