@@ -25,7 +25,7 @@ Note:
 
 ## Group members
 
-Audrey Juneman
+Audrey Juneman, Madeline Hulle
 
 ## Group name (optional):
 
