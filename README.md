@@ -91,7 +91,7 @@ Our first figure has date on the x-axis and precipitation on the y-axis, showing
 
 **Group members completing elective:**
 
-[delete this line and enter your own text here]
+Madeline, Maisie, and Audrey
 
 **Elective idea:**
 
