@@ -76,7 +76,7 @@ Our first figure has date on the x-axis and precipitation on the y-axis, showing
 
 **Natural history/framing director:**
 
-[delete this line and enter your own text here]
+Maisie
 
 **Stats and visualization director**
 
