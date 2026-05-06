@@ -95,7 +95,7 @@ Our first figure has date on the x-axis and precipitation on the y-axis, showing
 
 **Elective idea:**
 
-[delete this line and enter your own text here]
+Still in progress: a creative map project that depicts salinity throughout each pool, along with the rainfall and the species that are native to each pool. 
 
 **Elective timeline (what you will have completed each week):**
 
