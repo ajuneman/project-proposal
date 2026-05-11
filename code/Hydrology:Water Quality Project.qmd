@@ -36,7 +36,7 @@ water_parameters <- read_csv(here("data", "YSI_Data_Begin_1.csv"))
 
 ```
 
-### Code
+## Code
 
 ```{r}
 #| label: cleaning-weather
@@ -118,6 +118,8 @@ water_parameters_clean <- water_parameters |>
 ```
 
 
+# 2. Joining 
+
 ## water quality = metadata + water parameters
 
 ```{r}
@@ -165,6 +167,7 @@ water_quality_weather <- left_join(
 )
 ```
 
+# 3. Wrangling 
 ## Dealing with Outliers in Salinity
 ```{r}
 #| label: outlier
@@ -193,7 +196,59 @@ salinity_filtered <- water_quality_weather |>
 
 ```
 
+# 4. Figure Visualizing
+
+## Figure 1
+
+```{r}
+#| label: viz1
+
+ggplot(data = salinity_filtered,
+       mapping = aes(x = date,
+                     y = prcp)) +
+  geom_point() +
+  geom_line()
+
+```
 
 
+## Figure 2.
+```{r}
+#| label: viz2
+
+ggplot(data = salinity_filtered,
+       mapping = aes(x = date,
+                     y = water_surface_elevation)) +
+  geom_point() +
+  geom_line()
+
+```
+
+## Figure 3.
+```{r}
+#| label: viz3
+
+ggplot(data = salinity_filtered,
+       mapping = aes(x = salinity_ppt,
+                     y = elevation_code)) +
+  geom_col()
+
+
+```
+
+## Figure 4.
+```{r}
+#| label: viz4
+
+ggplot(data = salinity_filtered,
+       mapping = aes(x = prcp,
+                     y = salinity_ppt)) +
+  geom_point() +
+  geom_line() +
+  facet_wrap(~ site_full)
+  
+
+
+```
 
 
