@@ -1,0 +1,173 @@
+---
+title: "Hydrology/Water Quality Project"
+author: "Madeline Hulle, Maisie Prestridge, Audrey Juneman"
+format: pdf
+---
+
+# 1. Set up
+
+## Packages
+```{r}
+#| label: reading-in-packages
+#| message: false
+
+# general use
+library(tidyverse)
+library(janitor)
+
+# file organization
+library(here)
+
+```
+
+## Data
+```{r}
+#| label: data
+#| message: false
+
+# weather data from NOAA weather station
+weather <- read_csv(here("data", "NOAA-weather-data.csv"))
+
+# water quality survey metadata
+metadata <- read_csv(here("data", "NCOS_YSI_Water_Quality_Monitoring_0.csv"))
+
+# water quality parameter measurements
+water_parameters <- read_csv(here("data", "YSI_Data_Begin_1.csv"))
+
+```
+
+### Code
+
+```{r}
+#| label: cleaning-weather
+
+weather_clean <- weather |> 
+  # made column names all lowercase
+  clean_names() |> 
+  # puts date in proper format and makes sure its understood as date (not as chr)
+  mutate(date = mdy(date)) |> 
+  # keeping only these 4 columns of interest
+  select(date, prcp, tmax, tmin) |> 
+  # creating new columns for month and year
+  # extracting month from the date (needs to be in the standard date format for this function to work)
+  mutate(month = month(date),
+         year = year(date)) |> 
+  mutate(wy = case_when(
+    # when month os october or later, assign a value of year +1
+    # in the water ywar for next year
+    month >= 10 ~ year + 1,
+    # keeping all months < 10 the same (sept or earlier), assigning value of existing year
+    .default = year
+    ))
+
+```
+
+```{r}
+#| label: cleaning-metadata
+
+metadata_clean <- metadata |> 
+  # col names easier to work with (all lowercase w/ _)
+  clean_names() |> 
+  # "!" is the "not-operator", columns we DONT want to keep, excluding
+  select(!c(object_id, creator, editor)) |> 
+  mutate(monitoring_date = mdy_hms(monitoring_date)) |> 
+  rename(monitoring_datetime = monitoring_date) |> 
+  mutate(month = month(monitoring_datetime),
+         year = year(monitoring_datetime)) |> 
+  # assigning water year
+  mutate(wy = case_when(
+    month >= 10 ~ year +1,
+    .default = year )) |> 
+  # creatig new column for site full name
+  mutate(site_full = case_when(
+    site_name == "east_channel" ~ "East Channel",
+    site_name == "phelps_bridge" ~ "Phelps Bridge",
+    site_name == "venoco_bridge" ~ "Venoco Bridge",
+    site_name == "other" ~ "Other"
+  )) |> 
+  # filter out Other observations
+  filter(site_full != "Other")
+
+```
+
+```{r}
+#| label: cleaning-water-parameters
+
+# creating a new object from water parameters
+water_parameters_clean <- water_parameters |> 
+  # cleaning column names
+  clean_names() |> 
+  # "!" not operator, excluding unneeded columns
+  select(!c(creator, editor)) |> 
+  # renaming depth code to be elevation code to better represent methodology
+  rename(elevation_code = depth_code) |> 
+  ## Everything below came from visualizing the data first and defining what to fix/add
+  # fixing a mistake in the data
+  mutate(elevation_code = case_when(
+    # anytime theres a 10 in elevation code, replace it with a 1
+    elevation_code == 10 ~ 1,
+    # everything else, keep the same
+    .default = elevation_code)) |>
+  mutate(
+    # turning column into a factor
+    elevation_code = as_factor(elevation_code),
+    # defining the correct order for the levels of the factor
+    elevation_code = fct_relevel(elevation_code,
+                                 # write in the order you want
+                                 "0", "1", "2", "3", "4", "5", "6"))
+```
+
+
+## water quality = metadata + water parameters
+
+```{r}
+#| label: creating-water-quality-df
+
+
+
+# full joining
+water_quality <- full_join(
+  # left data frame
+  x = metadata_clean,
+  # right data frame
+  y = water_parameters_clean,
+  # name the columns in each df that you want to join by (naming the shared column)
+  by = c("global_id" = "parent_global_id")) |> 
+  select(
+    # information about the observation
+    global_id, monitoring_datetime, time_of_wq_measurement, monitor_name, weather, site_name, other_site_name, site_full, x, y,
+    # water information
+    water_surface_elevation, flow, notes,
+    #measurement information
+    elevation_code, do_mg_l, do_percent_sat, conductivity_u_s_cm, salinity_ppt, temperature_c
+  ) |> 
+  # taking the date out of this column, dont want the time
+  mutate(date = date(monitoring_datetime)) |> 
+  # moving the new date column to a better location within the df
+  relocate(date, .after = monitoring_datetime) |> 
+  # dont need this column anymore
+  select(!monitoring_datetime)
+```
+
+## water quality weather = water quality + weather
+
+```{r}
+#| label: join-water-quality-with-weather
+
+# left join
+water_quality_weather <- left_join(
+  # left data frame
+  x = water_quality,
+  # right data frame
+  y = weather_clean,
+  # joining these dfs by their date column
+  by = "date"
+)
+```
+
+
+
+
+
+
+
