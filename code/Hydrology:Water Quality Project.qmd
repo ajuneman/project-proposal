@@ -165,7 +165,33 @@ water_quality_weather <- left_join(
 )
 ```
 
+## Dealing with Outliers in Salinity
+```{r}
+#| label: outlier
 
+# creating new obj 
+salinity_outlier_ids <- water_quality_weather |> 
+  # filtering to only include outlier values
+  filter(salinity_ppt > 1410) |> 
+  # extracting the global id column as a vector usign pull
+  pull(global_id)
+
+```
+
+## Filtering Salinity
+```{r}
+#| label: salinity-filtered
+
+salinity_filtered <- water_quality_weather |> 
+  filter(elevation_code %in% c("0", "1", "2", "3")) |> 
+  # filtering the column global_id to exclude the values that match those in `salinity_outlier_ids`
+  filter(!global_id %in% salinity_outlier_ids) |> 
+  # setting the order of the levels (from lowest tp highest avg salinity value)
+  # helps the order of the visualizations
+  mutate(site_full = fct_relevel(site_full, 
+                                 "Phelps Bridge", "East Channel", "Venoco Bridge"))
+
+```
 
 
 
