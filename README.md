@@ -25,8 +25,7 @@ Note:
 
 ## Group members
 
-Audrey Juneman, Madeline Hulle
-
+Audrey Juneman, Madeline Hulle, Maisie Prestridge
 
 ## Topic information and question
 
@@ -156,8 +155,7 @@ Madeline
 
 **GitHub/code director**
 
-[delete this line and enter your own text here]
-
+Audrey
 
 ## Elective (not required for all groups or group members)
 
@@ -173,13 +171,13 @@ Still in progress: a creative map project that depicts salinity throughout each 
 
 Week 7: project proposal and workplan
 
-Week 8 (timeline check in): enter your own text here
+Week 8 (timeline check in): a very detailed draft of what specifically we will be doing, times picked for when we are going to work on project, roles and materials brainstormed
 
-Week 9: enter your own text here
+Week 9: first "draft" of project, some work done individually or together
 
-Week 10: enter your own text here
+Week 10: presentation finished for project, project completed
 
-Finals week: enter your own text here
+Finals week: nothing (our project will be done)
 
 
 
