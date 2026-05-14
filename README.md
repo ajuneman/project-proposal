@@ -26,7 +26,10 @@ Note:
 ## Group members
 
 Audrey Juneman, Madeline Hulle, Maisie Prestridge
+<<<<<<< HEAD
 
+=======
+>>>>>>> 4ae427792db78c366e2525dff542f43e9737161a
 
 ## Topic information and question
 
@@ -261,7 +264,10 @@ Madeline
 **GitHub/code director**
 
 Audrey
+<<<<<<< HEAD
 
+=======
+>>>>>>> 4ae427792db78c366e2525dff542f43e9737161a
 
 ## Elective (not required for all groups or group members)
 
@@ -277,6 +283,7 @@ Still in progress: a creative map project that depicts salinity throughout each 
 
 Week 7: project proposal and workplan
 
+<<<<<<< HEAD
 Week 8 (timeline check in): Basic Elective Idea & Code Finalized, literature notes
 
 Week 9: Literature Review Finalized, Basic Elective Almost Complete
@@ -284,6 +291,15 @@ Week 9: Literature Review Finalized, Basic Elective Almost Complete
 Week 10: All main aspects completed
 
 Finals week: Only used for tweaks and or optimization
+=======
+Week 8 (timeline check in): a very detailed draft of what specifically we will be doing, times picked for when we are going to work on project, roles and materials brainstormed
+
+Week 9: first "draft" of project, some work done individually or together
+
+Week 10: presentation finished for project, project completed
+
+Finals week: nothing (our project will be done)
+>>>>>>> 4ae427792db78c366e2525dff542f43e9737161a
 
 
 
