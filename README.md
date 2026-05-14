@@ -26,10 +26,7 @@ Note:
 ## Group members
 
 Audrey Juneman, Madeline Hulle, Maisie Prestridge
-<<<<<<< HEAD
 
-=======
->>>>>>> 4ae427792db78c366e2525dff542f43e9737161a
 
 ## Topic information and question
 
